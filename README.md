@@ -2,6 +2,32 @@
 
 Python bindings for the Unwired One's gpio.
 
+## Usage
+
+Import `unwired.gpio`, the following methods are available.
+
+`direction(gpio, direction)`: Set the direction of a gpio pin. `gpio` and `direction` are numbers. Make sure to use this, because the current state is unknown before calling it.
+
+`set(gpio, value)`: Set the value of a gpio pin. `gpio` and `value` are numbers.
+
+`read(gpio)`: Read the value of a gpio pin. `gpio` is a number.
+
+### Example script 'Blinking Led'
+
+```python
+from unwired import gpio
+from time import sleep
+
+# Set pin 27 to output
+gpio.direction(27, 1)
+
+while True:
+  gpio.set(27, 1)
+  sleep(1)
+  gpio.set(27, 0)
+  sleep(1)
+```
+
 ## Compiling
 
 To setup a build environment to build for the Unwired One see [C/C++ Building Environment][2] on the Unwired One wiki.
