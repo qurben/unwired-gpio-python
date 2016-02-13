@@ -18,8 +18,24 @@ static PyObject * gpio_direction(PyObject *self, PyObject *args, PyObject *keywd
 	return Py_None;
 }
 
+static PyObject * gpio_set(PyObject *self, PyObject *args, PyObject *keywds)
+{
+	const int gpio;
+	const int value;
+
+	static char *kwlist[] = {"gpio", "value", NULL};
+
+	if (!PyArg_ParseTupleAndKeywords(args, keywds, "ii", kwlist, &gpio, &value))
+		return NULL;
+
+	gpioSet(gpio, value);
+
+	return Py_None;
+}
+
 static PyMethodDef GpioMethods[] = {
 		{"direction", (PyCFunction)gpio_direction, METH_VARARGS|METH_KEYWORDS, "Set direction of a gpio"},
+		{"set", (PyCFunction)gpio_set, METH_VARARGS|METH_KEYWORDS, "Set the value of a gpio"},
 		{NULL, NULL, 0, NULL}
 };
 
