@@ -33,9 +33,26 @@ static PyObject * gpio_set(PyObject *self, PyObject *args, PyObject *keywds)
 	return Py_None;
 }
 
+static PyObject * gpio_read(PyObject *self, PyObject *args, PyObject *keywds)
+{
+	const int gpio;
+
+	int value;
+
+	static char *kwlist[] = {"gpio", NULL};
+
+	if (!PyArg_ParseTupleAndKeywords(args, keywds, "i", kwlist, &gpio))
+		return NULL;
+
+	value = gpioRead(gpio);
+
+	return PyLong_FromLong(value);
+}
+
 static PyMethodDef GpioMethods[] = {
 		{"direction", (PyCFunction)gpio_direction, METH_VARARGS|METH_KEYWORDS, "Set direction of a gpio"},
 		{"set", (PyCFunction)gpio_set, METH_VARARGS|METH_KEYWORDS, "Set the value of a gpio"},
+		{"read", (PyCFunction)gpio_read, METH_VARARGS|METH_KEYWORDS, "Read the value of a gpio"},
 		{NULL, NULL, 0, NULL}
 };
 
