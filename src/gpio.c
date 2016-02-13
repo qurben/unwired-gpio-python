@@ -15,7 +15,7 @@ static PyObject * gpio_direction(PyObject *self, PyObject *args, PyObject *keywd
 
 	gpioDirection(gpio, direction);
 
-	return Py_None;
+	Py_RETURN_NONE;
 }
 
 static PyObject * gpio_set(PyObject *self, PyObject *args, PyObject *keywds)
@@ -30,7 +30,7 @@ static PyObject * gpio_set(PyObject *self, PyObject *args, PyObject *keywds)
 
 	gpioSet(gpio, value);
 
-	return Py_None;
+	Py_RETURN_NONE;
 }
 
 static PyObject * gpio_read(PyObject *self, PyObject *args, PyObject *keywds)
