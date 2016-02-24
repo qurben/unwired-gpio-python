@@ -9,7 +9,7 @@ include $(INCLUDE_DIR)/package.mk
 
 define Package/unwired-gpio-python
 	SECTION:=utils
-	CATEGORY:=Utilities
+	CATEGORY:=Languages/Python
 	TITLE:=Unwired GPIO example
 endef
 
