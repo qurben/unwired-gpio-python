@@ -34,6 +34,12 @@ To setup a build environment to build for the Unwired One see [C/C++ Building En
 
 When you have a working installation, place this repository in the `openwrt/package` folder or create a symlink to this repository in that folder.
 
+Register the module in make menuconfig
+
+```bash
+make menuconfig
+```
+
 Create a `.ipk` file by running
 
 ```bash
