@@ -29,9 +29,9 @@ endef
 
 define Build/Compile
 	make -C $(PKG_BUILD_DIR) \
-	        $(TARGET_CONFIGURE_OPTS) \
-	        CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
-	        LIBS="$(TARGET_LDFLAGS)"
+			$(TARGET_CONFIGURE_OPTS) \
+			CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
+			LIBS="$(TARGET_LDFLAGS)"
 endef
 
 define Package/unwired-gpio-python/install
