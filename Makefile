@@ -14,7 +14,7 @@ define Package/unwired-gpio-python
 endef
 
 define Package/unwired-gpio-python/description
- This is a GPIO example
+ GPIO bindings for Python for the Unwired One
 endef
 
 MAKE_OPTS:= \
