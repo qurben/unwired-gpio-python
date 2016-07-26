@@ -4,12 +4,15 @@ PKG_NAME:=unwired-gpio-python
 PKG_RELEASE:=1
 
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
+PKG_BUILD_DEPENDS:=python
 
 include $(INCLUDE_DIR)/package.mk
+$(call include_mk, python-package.mk)
 
 define Package/unwired-gpio-python
 	SECTION:=utils
 	CATEGORY:=Languages/Python
+	DEPENDS:=+python-mini
 	TITLE:=Unwired GPIO example
 endef
 
@@ -28,16 +31,14 @@ define Build/Prepare
 endef
 
 define Build/Compile
-	make -C $(PKG_BUILD_DIR) \
-			$(TARGET_CONFIGURE_OPTS) \
-			CFLAGS="$(TARGET_CFLAGS) $(TARGET_CPPFLAGS)" \
-			LIBS="$(TARGET_LDFLAGS)"
+	$(call Build/Compile/PyMod,,install --prefix="$(PKG_INSTALL_DIR)/usr")
 endef
 
 define Package/unwired-gpio-python/install
-	$(INSTALL_DIR) $(1)/usr/lib/python2.7/unwired
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/__init__.py $(1)/usr/lib/python2.7/unwired/
-	$(INSTALL_BIN) $(PKG_BUILD_DIR)/gpio.so $(1)/usr/lib/python2.7/unwired/
+	$(INSTALL_DIR) $(1)$(PYTHON_PKG_DIR)
+	$(CP) \
+		$(PKG_INSTALL_DIR)$(PYTHON_PKG_DIR)/* \
+		$(1)$(PYTHON_PKG_DIR)
 endef
 
 $(eval $(call BuildPackage,unwired-gpio-python))
