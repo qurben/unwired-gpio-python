@@ -13,10 +13,8 @@ setup(name         = "unwired-gpio-python",
       url          = "https://github.com/qurben/unwired-gpio-python",
       download_url = "https://github.com/qurben/unwired-gpio-python",
       description  = "GPIO bindings for Python for the Unwired One",
-      #long_description = open('../README.md').read(),
       license      = "MIT",
       platforms    = ["Unwired One"],
-      #packages     = ['unwired'],
       ext_modules  = [
         Extension(name='unwired.gpio', sources=['unwired/gpio.c','unwired/native-gpio.c'], define_macros=macros)
       ]
