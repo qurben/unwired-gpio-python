@@ -2,6 +2,10 @@
 
 Python bindings for the Unwired One's gpio.
 
+## Downloading
+
+Download from releases on Github
+
 ## Usage
 
 Import `unwired.gpio`, the following methods are available.
